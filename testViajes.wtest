@@ -1,0 +1,66 @@
+import viajes.*
+
+describe "group of tests for viajes" {
+
+  const irALaCiudad1 = new ExcursionALaCiudad(idioma="español",atraccionesAVisitar=4)
+  const irALaCiudadTropical1 = new ExcursionALaCiudadTropical(idioma="español",atraccionesAVisitar=4)
+
+  test "un excursion a la ciudad que se visitan 4 atraccciones" {
+    assert.equals(2, irALaCiudad1.cuantosDiasLleva())
+    assert.notThat(irALaCiudad1.implicaEsfuerzo())
+    assert.notThat(irALaCiudad1.sirveParaBrocearse())
+  }
+
+  test "un excursion a la ciudad tropical que se visitan 4 atraccciones" {
+    assert.equals(3, irALaCiudadTropical1.cuantosDiasLleva())
+    assert.notThat(irALaCiudadTropical1.implicaEsfuerzo())
+    assert.that(irALaCiudadTropical1.sirveParaBrocearse())
+  }
+
+  const irALaCiudad2 = new ExcursionALaCiudad(idioma="español",atraccionesAVisitar=8)
+  const irALaCiudadTropical2 = new ExcursionALaCiudadTropical(idioma="español",atraccionesAVisitar=8)
+
+  test "un excursion a la ciudad que se visitan 8 atraccciones" {
+    assert.equals(4, irALaCiudad2.cuantosDiasLleva())
+    assert.that(irALaCiudad2.implicaEsfuerzo())
+    assert.notThat(irALaCiudad2.sirveParaBrocearse())
+  }
+
+  test "un excursion a la ciudad tropical que se visitan 8 atraccciones" {
+    assert.equals(5, irALaCiudadTropical2.cuantosDiasLleva())
+    assert.that(irALaCiudadTropical2.implicaEsfuerzo())
+    assert.that(irALaCiudadTropical2.sirveParaBrocearse())
+  }
+
+  const irALaCiudadTropical3 = new ExcursionALaCiudadTropical(idioma="español",atraccionesAVisitar=10)
+
+  test "un excursion a la ciudad tropical que se visitan 10 atraccciones" {
+    assert.equals(6, irALaCiudadTropical3.cuantosDiasLleva())
+    assert.notThat(irALaCiudadTropical3.implicaEsfuerzo())
+    assert.that(irALaCiudadTropical3.sirveParaBrocearse())
+  }
+
+  const salidadDeTrekking1 = new SalidaDeTrekking(idioma="español",kilometrosARecorrer=100,diasDeSol=130)
+
+  test "una salida de traekking con 100 kilometros a un lugar con 130 dias de sol" {
+    assert.equals(2, salidadDeTrekking1.cuantosDiasLleva())
+    assert.that(salidadDeTrekking1.implicaEsfuerzo())
+    assert.notThat(salidadDeTrekking1.sirveParaBrocearse())
+  }
+
+  const salidadDeTrekking2 = new SalidaDeTrekking(idioma="español",kilometrosARecorrer=50,diasDeSol=240)
+
+  test "una salida de traekking con 50 kilometros a un lugar con 240 dias de sol" {
+    assert.equals(1, salidadDeTrekking2.cuantosDiasLleva())
+    assert.notThat(salidadDeTrekking2.implicaEsfuerzo())
+    assert.that(salidadDeTrekking2.sirveParaBrocearse())
+  }
+
+  const salidadDeTrekking3 = new SalidaDeTrekking(idioma="español",kilometrosARecorrer=250,diasDeSol=130)
+
+  test "una salida de traekking con 250 kilometros a un lugar con 130 dias de sol" {
+    assert.equals(5, salidadDeTrekking3.cuantosDiasLleva())
+    assert.that(salidadDeTrekking3.implicaEsfuerzo())
+    assert.that(salidadDeTrekking3.sirveParaBrocearse())
+  }
+}

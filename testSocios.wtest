@@ -1,0 +1,19 @@
+import socios.*
+import viajes.*
+
+
+describe "group of tests for socios" {
+
+    const viajeALaPlaya1 = new ViajeDePlaya(idioma="español",largo=1000)
+    const viajeALaPlaya2 = new ViajeDePlaya(idioma="español",largo=2000)
+
+    const Roque = new Socio(actividadRealizada=[viajeALaPlaya1,viajeALaPlaya2],maximoDeActividades=2)
+
+  test "a roque le gusta el sol" {
+    assert.that(Roque.esAdoradorAlSol())
+  }
+
+  test "las actividades esforzadas de roque es el segundo viaje" {
+    assert.equals(viajeALaPlaya2, Roque.actividadesEsforzadas())
+  }
+}
